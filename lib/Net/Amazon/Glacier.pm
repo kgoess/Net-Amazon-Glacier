@@ -288,7 +288,7 @@ sub upload_archive {
 	croak 'archive path is not a file' unless -f $archive_path;
 
 	$description //= '';
-	my $content = File::Slurp::read_file( $archive_path, err_mode => 'croak' );
+	my $content = File::Slurp::read_file( $archive_path, err_mode => 'croak', binmode => ':raw' );
 
 	return $self->_do_upload($vault_name, \$content, $description);
 }
