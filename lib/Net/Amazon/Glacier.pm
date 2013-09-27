@@ -389,7 +389,7 @@ sub delete_archive {
 	close ( A_FILE );
 
 	# Capture archive id or error code
-	my $archive_id = $glacier->multipart_upload_complete( $vault, $upload_id, $parts_hash, $part_size * ( $part_index - 1) + $read_bytes  );
+	my $archive_id = $glacier->multipart_upload_complete( $vault, $upload_id, $parts_hash, $part_size * ( $part_index ) + $read_bytes  );
 
 	# Check if we have a valid $archive_id
 	unless ( $archive_id =~ /^[a-zA-Z0-9_\-]{10,}$/ ) {
